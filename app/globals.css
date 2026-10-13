@@ -1,21 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fff8f0;
+  --foreground: #333;
+  --primary: #ff6b35;
+  --secondary: #f7931e;
+  --accent: #ffd23f;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1a1a1a;
+    --foreground: #f0f0f0;
+    --primary: #ff6b35;
+    --secondary: #f7931e;
+    --accent: #ffd23f;
   }
 }
 
@@ -23,4 +32,53 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Custom styles for food delivery */
+.food-card {
+  @apply bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300;
+}
+
+.food-image {
+  @apply object-cover;
+}
+
+.food-content {
+  @apply p-4;
+}
+
+.food-title {
+  @apply text-xl font-semibold text-primary mb-2;
+}
+
+.food-description {
+  @apply text-gray-600 dark:text-gray-300 mb-4;
+}
+
+.food-price {
+  @apply text-lg font-bold text-secondary;
+}
+
+.btn-primary {
+  @apply bg-primary text-white px-6 py-3 rounded-full hover:bg-secondary transition-colors duration-300;
+}
+
+.btn-secondary {
+  @apply bg-white text-primary border border-primary px-6 py-3 rounded-full hover:bg-primary/90 transition-colors duration-300;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Glassmorphism effect */
+.glass {
+  @apply bg-white/30 dark:bg-gray-800/30 backdrop-blur-lg border border-white/20 dark:border-gray-700/20 rounded-lg shadow-inner;
 }
